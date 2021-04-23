@@ -25,21 +25,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-            
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Cache Primes
+          id: cache-primes
+          uses: actions/cache@v2
+          with:
+            path: prime-numbers
+            key: ${{ runner.os }}-primes
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Generate Prime Numbers
+          if: steps.cache-primes.outputs.cache-hit != 'true'
+          run: /generate-primes.sh -d prime-numbers
+
+      - name: Use Prime Numbers
+          run: /primes.sh -d prime-numbers
+               echo "Run your script here"

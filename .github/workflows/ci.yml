@@ -25,17 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Cache Primes
-        id: cache-primes
-        uses: actions/cache@v2
-        with:
-          path: prime-numbers
-          key: ${{ runner.os }}-primes
+    - name: Get Date
+      id: get-date
+      run: |
+        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+      shell: bash
 
-      - name: Generate Prime Numbers
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: /generate-primes.sh -d prime-numbers
-
-      - name: Use Prime Numbers
-        run: /primes.sh -d prime-numbers
-             echo "Run your script here"
+    - uses: actions/cache@v2
+      with:
+       path: path/to/dependencies
+       key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}

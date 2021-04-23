@@ -33,5 +33,5 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-        path: path/to/dependencies
+          path: path/to/dependencies
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}

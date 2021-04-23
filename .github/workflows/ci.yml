@@ -35,3 +35,11 @@ jobs:
         with:
           path: path/to/dependencies
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
+
+      strategy:
+        matrix:
+          node: [6, 8, 10]
+        steps:
+          - uses: actions/setup-node@v1
+            with:
+              node-version: ${{ matrix.node }}

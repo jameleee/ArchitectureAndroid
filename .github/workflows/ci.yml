@@ -42,9 +42,9 @@ jobs:
           curl https://httpbin.org/json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
       - name: Use the value
-          id: step_four
-          run: |
-            echo "${{ env.action_state }}" # This will output 'yellow'
+        id: step_four
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
 
   # This workflow contains a single job called "build"
   build:

@@ -45,7 +45,7 @@ jobs:
       - name: Set the value
         id: step_four
         run: |
-          echo "$GITHUB_ENV"
+          echo "$GITHUB_ENV \n $GITHUB_REF"
 
   # This workflow contains a single job called "build"
   build:

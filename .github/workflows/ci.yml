@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "${{ env.action_state }}" # This will output 'yellow'
       - name: Set the value
-        id: step_two
+        id: step_three
         run: |
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
           curl https://httpbin.org/json >> $GITHUB_ENV

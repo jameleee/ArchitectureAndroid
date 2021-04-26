@@ -39,9 +39,9 @@ jobs:
         id: step_three
         run: |
           echo 'JSON_RESPONSE<<F' >> $GITHUB_ENV
-          curl https://httpbin.org/json >> $GITHUB_ENV
+          echo "kkkk=pppp" >> $GITHUB_ENV
           echo 'F' >> $GITHUB_ENV
-    - name: Set the value
+      - name: Set the value
         id: step_four
         run: |
           echo "$GITHUB_ENV"

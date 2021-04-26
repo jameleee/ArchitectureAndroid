@@ -15,6 +15,19 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  weekday_job:
+    runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: Mon
+    steps:
+      - name: "Hello world when it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
+        run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -35,11 +48,3 @@ jobs:
         with:
           path: path/to/dependencies
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
-
-      strategy:
-        matrix:
-          node: [6, 8, 10]
-        steps:
-          - uses: actions/setup-node@v1
-            with:
-              node-version: ${{ matrix.node }}

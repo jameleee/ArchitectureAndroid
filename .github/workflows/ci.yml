@@ -27,6 +27,14 @@ jobs:
           FIRST_NAME: Mona
           middle_name: The
           Last_Name: Octocat
+      - name: Set the value
+          id: step_one
+          run: |
+            echo "action_state=yellow" >> $GITHUB_ENV
+            - name: Use the value
+              id: step_two
+              run: |
+                echo "${{ env.action_state }}" # This will output 'yellow'
 
   # This workflow contains a single job called "build"
   build:

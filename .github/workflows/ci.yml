@@ -39,7 +39,7 @@ jobs:
         id: step_three
         run: |
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
-          curl https://httpbin.org/json >> $GITHUB_ENV
+          echo "kkkk=pppp" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
   # This workflow contains a single job called "build"

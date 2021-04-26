@@ -41,6 +41,10 @@ jobs:
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
           echo "kkkk=pppp" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+      - name: Set the value
+        id: step_four
+        run: |
+          echo "$GITHUB_ENV"
 
   # This workflow contains a single job called "build"
   build:

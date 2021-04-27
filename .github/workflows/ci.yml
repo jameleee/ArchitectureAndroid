@@ -12,6 +12,15 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,31 +29,18 @@ jobs:
     env:
       DAY_OF_WEEK: Mon
     steps:
-      - name: "Hello world when it's Monday"
-        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
-        run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
-        env:
-          FIRST_NAME: Mona
-          middle_name: The
-          Last_Name: Octocat
-      - name: Set the value
-        id: step_one
-        run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
-      - name: Use the value
-        id: step_two
-        run: |
-          echo "${{ env.action_state }}" # This will output 'yellow'
       - name: Set the value
         id: step_three
         run: |
           echo 'JSON_RESPONSE<<F' >> $GITHUB_ENV
           curl https://httpbin.org/json >> $GITHUB_ENV
           echo 'F' >> $GITHUB_ENV
-      - name: Set the value
-        id: step_four
-        run: |
-          echo "env.JSON_RESPONSE"
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Hello ${{ github.event.inputs.name }}!"
+          echo "- in ${{ github.event.inputs.home }}!"
 
   # This workflow contains a single job called "build"
   build:

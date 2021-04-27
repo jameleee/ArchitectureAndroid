@@ -44,7 +44,7 @@ jobs:
       - name: Set the value
         id: step_four
         run: |
-          echo "${{ env.JSON_RESPONSE }}"
+          echo "env.JSON_RESPONSE"
 
   # This workflow contains a single job called "build"
   build:

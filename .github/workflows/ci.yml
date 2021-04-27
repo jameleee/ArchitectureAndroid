@@ -42,8 +42,8 @@ jobs:
         if: github.event.inputs.name != ''
         id: step_print
         run: |
-          echo "Hello ::${{ github.event.inputs.name }}!"
-          echo "- in ::${{ github.event.inputs.home }}!"
+          echo "Hello ${{ github.event.inputs.name }}!" >> $GITHUB_ENV
+          echo "- in ${{ github.event.inputs.home }}!" >> $GITHUB_ENV
 
   # This workflow contains a single job called "build"
   build:

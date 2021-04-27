@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Value
+        if: github.event.inputs.an_input != ''
         id: step_print
         run: |
           echo "Hello ::${{ github.event.inputs.name }}!"

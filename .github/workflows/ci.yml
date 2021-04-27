@@ -41,11 +41,11 @@ jobs:
           echo 'JSON_RESPONSE<<F' >> $GITHUB_ENV
           echo "kkkk=pppp" >> $GITHUB_ENV
           echo 'F' >> $GITHUB_ENV
-          echo "${{ env.JSON_RESPONSE }}"
       - name: Set the value
         id: step_four
         run: |
-          echo "$GITHUB_ENV \\n $GITHUB_REF"
+        echo "${{ env.JSON_RESPONSE }}"
+        echo "$GITHUB_ENV \\n $GITHUB_REF"
 
   # This workflow contains a single job called "build"
   build:

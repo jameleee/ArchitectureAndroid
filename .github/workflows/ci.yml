@@ -13,11 +13,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      name:
+      - name:
         description: 'Person to greet'
         required: true
         default: 'Mona the Octocat'
-      home:
+      - home:
         description: 'location'
         required: true
         default: 'The Octoverse'
@@ -82,10 +82,10 @@ jobs:
         with:
           ruby-version: 2.6.x
 
-      - name: Cache gem dependencies
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/*Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
+#      - name: Cache gem dependencies
+#        uses: actions/cache@v1
+#        with:
+#          path: vendor/bundle
+#          key: ${{ runner.os }}-gem-${{ hashFiles('**/*Gemfile.lock') }}
+#          restore-keys: |
+#            ${{ runner.os }}-gem-

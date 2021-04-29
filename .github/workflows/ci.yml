@@ -14,13 +14,13 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Person to greet'
-        required: true
+        description: 'Testing some thing ...'
         default: 'Mona the Octocat'
-      home:
-        description: 'location'
         required: true
+      home:
+        description: 'Location'
         default: 'The Octoverse'
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

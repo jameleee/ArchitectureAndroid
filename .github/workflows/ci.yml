@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Value
-        if: github.event.inputs.name != ''
+#        if: github.event.inputs.name != ''
         id: step_print
         env:
           KAPT: ${{ github.event.inputs.name }}

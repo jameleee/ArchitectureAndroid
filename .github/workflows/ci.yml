@@ -42,7 +42,7 @@ jobs:
       - name: Use Value
         if: github.event.inputs.name != ''
         id: step_print
-        env: |
+        env:
           KAPT: ${{ github.event.inputs.name }}
         run: |
           echo "Hello $KAPT!"

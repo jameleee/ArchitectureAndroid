@@ -48,15 +48,15 @@ jobs:
           echo "Hello $KAPT!"
           echo "- in ${{ github.event.inputs.home }}!"
 
-  cleanup-runs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Cleanup runs
-        run: ./scripts/entrypoint.sh
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#  cleanup-runs:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Cleanup runs
+#        run: ./scripts/entrypoint.sh
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # This workflow contains a single job called "build"
   build:

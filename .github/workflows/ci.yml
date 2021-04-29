@@ -42,8 +42,10 @@ jobs:
       - name: Use Value
         if: github.event.inputs.name != ''
         id: step_print
+        env: |
+          KAPT: ${{ github.event.inputs.name }}
         run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
+          echo "Hello $KAPT!"
           echo "- in ${{ github.event.inputs.home }}!"
 
   cleanup-runs:
@@ -77,10 +79,10 @@ jobs:
           path: path/to/dependencies
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
 
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.6.x
+#      - name: Set up Ruby 2.6
+#        uses: actions/setup-ruby@v1
+#        with:
+#          ruby-version: 2.6.x
 
 #      - name: Cache gem dependencies
 #        uses: actions/cache@v1
